@@ -1,6 +1,6 @@
 public class Main {
     public static void main(String[] args) {
-        System.out.println(searchInsert(new int[]{1, 2, 4, 6, 8, 9}, 4));
+        System.out.println(searchInsert(new int[]{1, 2, 4, 6, 8, 9}, 7));
     }
 
 
@@ -20,14 +20,15 @@ public class Main {
 
         // [1, 2, 4, 6, 8, 9], len = 6
         int i = nums.length / 2;
-        int j = 0;
-        while (i != j) {
+        int from = 0;
+        int to = nums.length;
+        while (from != to) {
             if (nums[i] > target) {
-                i = i / 2;
+                to = i;
+                i = to / 2;
             } else if (nums[i] < target) {
-                System.out.println(i);
-                j = nums.length;
-                i = i + (j - i) / 2;
+                from = i;
+                i = i + (to - i) / 2;
             } else {
                 return i;
             }
